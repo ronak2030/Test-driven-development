@@ -30,5 +30,10 @@ describe("String Calculator", () => {
     const result = calculate("1\n2,-3");
     expect(result).toBe("negative numbers not allowed -3");
   })
+
+  it('Should ignore numbers more than 1000', () => {
+    const result = calculate("1\n2,1001");
+    expect(result).toBe(3);
+  })
  
 });

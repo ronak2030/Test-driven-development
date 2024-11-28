@@ -31,7 +31,11 @@ const calculator = (str) => {
         const negativeNum = splitedNums.find(num => parseInt(num) < 0);
 
         if(negativeNum) return `negative numbers not allowed ${negativeNum}`
-        return splitedNums.reduce((acc, numStr) => acc += parseInt(numStr), 0)
+        return splitedNums.reduce((acc, numStr) => {
+            const num = parseInt(numStr);
+            acc += (num > 1000? 0 : num);
+            return acc;
+        }, 0)
     }
 }
 
