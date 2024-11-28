@@ -25,4 +25,10 @@ describe("String Calculator", () => {
     const result = calculate('//;\n1;2');
     expect(result).toBe(3);
   })
+
+  it('Should not support input string with negative number', () => {
+    const result = calculate("1\n2,-3");
+    expect(result).toBe("negative numbers not allowed -3");
+  })
+ 
 });

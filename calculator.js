@@ -28,6 +28,9 @@ const calculator = (str) => {
 
     if(isStrHasDelimiter){
         const splitedNums = splitByDelimiters(str, delimiters);
+        const negativeNum = splitedNums.find(num => parseInt(num) < 0);
+
+        if(negativeNum) return `negative numbers not allowed ${negativeNum}`
         return splitedNums.reduce((acc, numStr) => acc += parseInt(numStr), 0)
     }
 }
