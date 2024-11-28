@@ -14,5 +14,10 @@ describe("String Calculator", () => {
   it('Should return addition of comma saperated two numbers', () => {
     const result = calculate("1,2");
     expect(result).toBe(3);
+  });
+
+  it('Should return addition if numbers saperated by new line(\n) and comma', () => {
+    const result = calculate('1\n2,3');
+    expect(result).toBe(6);
   })
 });
