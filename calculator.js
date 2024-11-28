@@ -20,10 +20,13 @@ const calculator = (str) => {
 
     if(str.startsWith("//")){
         const delimiterEndIndex = str.indexOf("\n");
-        const customDelimiter = str.substring(2, delimiterEndIndex);
+        let customDelimiter = str.substring(2, delimiterEndIndex);
+        if(customDelimiter.includes("[")){
+            customDelimiter = customDelimiter.slice(customDelimiter.indexOf("[")+1, customDelimiter.indexOf("]"));
+        }
         delimiters = [customDelimiter];
         str = str.substring(delimiterEndIndex + 1);
-        isStrHasDelimiter = true
+        isStrHasDelimiter = true;
     }
 
     if(isStrHasDelimiter){
