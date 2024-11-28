@@ -22,9 +22,12 @@ const calculator = (str) => {
         const delimiterEndIndex = str.indexOf("\n");
         let customDelimiter = str.substring(2, delimiterEndIndex);
         if(customDelimiter.includes("[")){
-            customDelimiter = customDelimiter.slice(customDelimiter.indexOf("[")+1, customDelimiter.indexOf("]"));
+            customDelimiter = customDelimiter.slice(customDelimiter.indexOf("[")+1, customDelimiter.lastIndexOf("]"));
         }
-        delimiters = [customDelimiter];
+        if(customDelimiter.includes("][")){
+            customDelimiter = customDelimiter.split("][")
+        }
+        delimiters = [...(Array.isArray(customDelimiter)?customDelimiter:[customDelimiter])];
         str = str.substring(delimiterEndIndex + 1);
         isStrHasDelimiter = true;
     }

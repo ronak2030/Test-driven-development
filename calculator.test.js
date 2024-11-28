@@ -40,4 +40,9 @@ describe("String Calculator", () => {
     const result = calculate("//[*]\n1*2*1001");
     expect(result).toBe(3);
   })
+
+  it('Should support multiple dynamic delimiters in [] fromat', () => {
+    const result = calculate("//[*][+]\n1+2*1001");
+    expect(result).toBe(3);
+  })
 });
