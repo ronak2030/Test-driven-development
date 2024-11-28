@@ -15,8 +15,16 @@ const calculator = (str) => {
     if(str === "") return 0;
     if(str.length === 1) return parseInt(str);
 
-    const delimiters = [",", "\n"];
-    const isStrHasDelimiter = delimiters.some(delimiter => str.includes(delimiter));
+    let delimiters = [",", "\n"];
+    let isStrHasDelimiter = delimiters.some(delimiter => str.includes(delimiter));
+
+    if(str.startsWith("//")){
+        const delimiterEndIndex = str.indexOf("\n");
+        const customDelimiter = str.substring(2, delimiterEndIndex);
+        delimiters = [customDelimiter];
+        str = str.substring(delimiterEndIndex + 1);
+        isStrHasDelimiter = true
+    }
 
     if(isStrHasDelimiter){
         const splitedNums = splitByDelimiters(str, delimiters);
